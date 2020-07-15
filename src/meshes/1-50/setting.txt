@@ -1,0 +1,58 @@
+####### Patameters 
+const LENGTH = 1.0
+const DEVIDES = 50
+
+const DIFF = LENGTH/DEVIDES
+
+const OBJ_FUNC_EPS = 1e-5
+
+const CATG = ["u", "lambda"]
+
+const NUM_ITERATION = 100
+
+
+###### Other Physical Parameters
+const DENSITY = 1.1839e+00 #density of the propagation medium
+const SOUND_SPEED = 346.18
+
+####### Level-set method Parameters
+K = 1e5
+tau = 2.5*2.5*1e-4
+delta_t = 0.005
+
+####### Frequency info
+frqStart = 0.0 #kHz
+frqStep = SOUND_SPEED/1000 #kHz
+frqNums = 1
+
+####### Evaluation mesh (place of microphones)
+num_microphones = 2
+m1 = Point(1.25, 1.25, 5.0, 0)
+m2 = Point(1.25, 1.25, -2.5, 0)
+microphones = [m1, m2]
+
+mic_p = Array{Complex{Float64}, 1}(undef, num_microphones)
+mic_v = Array{Complex{Float64}, 1}(undef, num_microphones)
+
+####### Place of Sound Source
+num_source = 2
+INTENSITY = 70
+s1 = Point(5.0, 1.25, 1.25, INTENSITY)
+s2 = Point(-2.5, 1.25, 1.25, INTENSITY)
+sources = [s1, s2]
+
+####### Create Domain
+phi = Array{Float64, 3}(undef, DEVIDES, DEVIDES, DEVIDES)
+
+####### Array
+u_p = Array{Complex{Float64}, 3}(undef, DEVIDES, DEVIDES, DEVIDES)
+u_v = Array{Complex{Float64}, 3}(undef, DEVIDES, DEVIDES, DEVIDES)
+lambda_p = Array{Complex{Float64}, 3}(undef, DEVIDES, DEVIDES, DEVIDES)
+lambda_v = Array{Complex{Float64}, 3}(undef, DEVIDES, DEVIDES, DEVIDES)
+
+####### initial distribution of phi_{0} 
+const EPS = 1e-10
+const center_x = 0.50
+const center_y = 0.50
+const center_z = 0.50
+const radius = 0.10
