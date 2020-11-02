@@ -18,7 +18,7 @@ function read_ouput_u(freq)
     freq is not actual frequency but index.
     """
     which = "u"
-    for i = 1:2
+    for i = 1:2 # 実部と虚部
         filename = @sprintf("./WAON/%s/output/oFPM%04d.s0%d", which, freq, i)
         open(filename) do file
             for l in enumerate(eachline(file))
